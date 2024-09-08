@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube to MP4 & MP3 Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 600px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 1.2em;
+        }
+
+        input[type="url"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        button {
+            width: 48%;
+            padding: 10px;
+            font-size: 1em;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #loading {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        #loading img {
+            width: 50px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 0.9em;
+            color: #888;
+        }
+
+        .download-link {
+            display: none;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .download-link a {
+            color: #007bff;
+            font-size: 1.2em;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>YouTube to MP4 & MP3 Converter</h1>
+</header>
+
+<div class="container">
+    <div class="input-group">
+        <label for="youtube-url">Enter YouTube URL:</label>
+        <input type="url" id="youtube-url" placeholder="https://www.youtube.com/watch?v=example" required>
+    </div>
+
+    <div class="buttons">
+        <button id="mp4-button">Convert to MP4</button>
+        <button id="mp3-button">Convert to MP3</button>
+    </div>
+
+    <div id="loading">
+        <p>Converting...</p>
+        <img src="https://i.gifer.com/ZZ5H.gif" alt="Loading...">
+    </div>
+
+    <div class="download-link" id="download-link">
+        <p>Download your file:</p>
+        <a href="#" id="download-url" target="_blank">Click here to download</a>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 YouTube Converter. All rights reserved.</p>
+</footer>
+
+<script>
+    document.getElementById('mp4-button').addEventListener('click', function() {
+        convertVideo('mp4');
+    });
+
+    document.getElementById('mp3-button').addEventListener('click', function() {
+        convertVideo('mp3');
+    });
+
+    function convertVideo(format) {
+        var url = document.getElementById('youtube-url').value;
+
+        if (url === '') {
+            alert('Please enter a YouTube URL');
+            return;
+        }
+
+        document.getElementById('loading').style.display = 'block';
+        document.getElementById('download-link').style.display = 'none';
+
+        // Simulate an API call with a timeout for this example
+        setTimeout(function() {
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('download-link').style.display = 'block';
+
+            // Simulate download link (replace this with the actual API response)
+            document.getElementById('download-url').href = `https://example.com/download/${format}?video=${encodeURIComponent(url)}`;
+            document.getElementById('download-url').textContent = `Download as ${format.toUpperCase()}`;
+        }, 3000); // Simulate 3 seconds loading time
+    }
+</script>
+
+</body>
+</html>
